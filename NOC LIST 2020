@@ -1,0 +1,81 @@
+
+let agent0 = (coverName: "Ethan Hunt", realName: "Tom Cruise", accessLevel: 8, compromised: false)
+let agent1 = (coverName: "Jim Phelps", realName: "Jon Voight", accessLevel: 9, compromised: true)
+let agent2 = (coverName: "Claire Phelps", realName: "Emmanuelle Beart", accessLevel: 5, compromised: false)
+let agent3 = (coverName: "Eugene Kittridge", realName: "Henry Czerny", accessLevel: 10, compromised: true)
+let agent4 = (coverName: "Franz Krieger", realName: "Jean Reno", accessLevel: 4, compromised: false)
+let agent5 = (coverName: "Luther Stickell", realName: "Ving Rhames", accessLevel: 4, compromised: false)
+let agent6 = (coverName: "Sarah Davies", realName: "Kristin Scott Thomas", accessLevel: 5, compromised: true)
+let agent7 = (coverName: "Max RotGrab", realName: "Vanessa Redgrave", accessLevel: 4, compromised: false)
+let agent8 = (coverName: "Hannah Williams", realName: "Ingeborga Dapkūnaitė", accessLevel: 5, compromised: true)
+let agent9 = (coverName: "Jack Harmon", realName: "Emilio Estevez", accessLevel: 6, compromised: true)
+let agent10 = (coverName: "Frank Barnes", realName: "Dale Dye", accessLevel: 9, compromised: false)
+
+
+let agentsArray = [agent0, agent1, agent2, agent3, agent4, agent5, agent6, agent7, agent8, agent9, agent10]
+
+
+func compromisedAgents() -> Int {
+    
+    var count = 0
+    
+    for agent in agentsArray {
+        if agent.compromised == true {
+            count += 1
+        }
+    }
+        return count
+}
+compromisedAgents()
+let totalCompromised = compromisedAgents()
+print("\(totalCompromised) agents have been compromised!")
+
+
+ func findCleanAgents() -> Int {
+
+    var count = 0
+    
+    for agent in agentsArray {
+        if agent.compromised == false {
+            count += 1
+        }
+    }
+        return count
+}
+findCleanAgents()
+
+let totalCleanAgents = findCleanAgents()
+
+print("\(totalCleanAgents) clean agents out of \(agentsArray.count) total agents")
+
+func findHighRisk() {
+    for agent in agentsArray {
+        if agent.accessLevel >= 8,
+            agent.compromised == true {
+            print("\(agent.realName), level: \(agent.accessLevel) **WARNING**COMPROMISED**")
+        }else if agent.compromised == false {
+            print("\(agent.realName), level: \(agent.accessLevel)")
+        }
+    }
+}
+findHighRisk()
+
+func agentLevelSort() {
+    var lowLevelAgents = 0
+    var midLevelAgents = 0
+    var highLevelAgents = 0
+    
+    for agent in agentsArray {
+        switch agent.accessLevel {
+        case 0...4:
+            lowLevelAgents += 1
+        case 5...7:
+            midLevelAgents += 1
+        default:
+            highLevelAgents += 1
+        }
+    }
+    print("\(lowLevelAgents) low level agents, \(midLevelAgents) mid level agents, and \(highLevelAgents) high level agents")
+}
+
+agentLevelSort()
